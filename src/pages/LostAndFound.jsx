@@ -1,5 +1,5 @@
-import Search from "./Search"
-import Card from "./Card";
+import Search from "../components/Search"
+import Card from "../components/Card";
 
 function LostAndFound(){
     return(<>

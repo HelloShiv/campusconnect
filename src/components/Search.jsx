@@ -1,5 +1,5 @@
 import React from "react";
-import "../src/css/search/search.css";
+import "../styles/search.css";
 
 function Search(){
     return <form class="form-search" method="get" action="#" onChange= {event => event.preventDefault()}>

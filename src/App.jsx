@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "./Navbar";
-import LostAndFound from "./LostAndFound"
 import { Routes, Route } from "react-router-dom";
-import Marketplace from "./Marketplace";
-import Query from "./Query";
-import Home from "./Home";
-import Login from "./Login";
+import Navbar from "./components/Navbar";
+import LostAndFound from "./pages/LostAndFound"
+import Marketplace from "./pages/Marketplace";
+import Query from "./pages/Marketplace";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App(){
     
