@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/search.css";
 
-function Search(){
+function Search(props){
     return <form class="form-search" method="get" action="#" onChange= {event => event.preventDefault()}>
-            <input type="search" name="search" placeholder="Seach for the lost item ...." />
+            <input type="search" name="search" placeholder={props.placeholder} />
             <button type="submit">Search</button>
             
         </form>

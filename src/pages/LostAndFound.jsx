@@ -3,7 +3,7 @@ import Card from "../components/Card";
 
 function LostAndFound(){
     return(<>
-     <Search />
+     <Search placeholder="Seach for the lost item ...."/>
         <Card />
         </>
     );

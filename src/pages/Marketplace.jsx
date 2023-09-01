@@ -1,7 +1,16 @@
 import React from "react";
+import Search from "../components/Search"
+import MarketplaceItems from "../components/MarketPlaceItems";
+import MarketplaceCard from "../components/MarketPlaceCard";
+
 
 function Marketplace(){
-    return <h1 style={{paddingTop:"10vh"}}>Welcome to Marketpace</h1>
+    return (<>
+        <Search placeholder="Seach for the products........"/>
+        <MarketplaceCard />
+        
+        </>
+    );
 }
 
 export default Marketplace;
