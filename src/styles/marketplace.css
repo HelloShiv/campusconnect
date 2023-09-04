@@ -89,9 +89,9 @@ img {
   overflow: hidden;
 }
 
-.card_content {
+.product_content {
   padding: 1rem;
-  background: #212f21;
+  background: #384f48;
 }
 
 .card_title {
@@ -115,4 +115,16 @@ img {
   font-size: 13px;
   margin-top: 35px;
   text-align: center;
+}
+
+.product_image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product_photo{
+  padding: 2vh;
+  height: 300px;
+  width: auto;
 }

@@ -15,6 +15,7 @@
 
 .login-container {
   padding-top: 20vh;
+  padding-bottom: 4vh;
   display: flex;
   max-width: 1200px;
   background: var(--white);
