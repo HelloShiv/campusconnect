@@ -4,15 +4,15 @@ import "../styles/footer.css"
 function Footer(){
 return ( <footer>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /  >
-<div class="footer">
-<div class="row">
-<a href="#"><i class="fa fa-facebook"></i></a>
-<a href="#"><i class="fa fa-instagram"></i></a>
-<a href="#"><i class="fa fa-youtube"></i></a>
-<a href="#"><i class="fa fa-twitter"></i></a>
+<div className="footer">
+<div className="row">
+<a href="#"><i className="fa fa-facebook"></i></a>
+<a href="#"><i className="fa fa-instagram"></i></a>
+<a href="#"><i className="fa fa-youtube"></i></a>
+<a href="#"><i className="fa fa-twitter"></i></a>
 </div>
 
-<div class="row">
+<div className="row">
 <ul>
 <li><a href="#">Contact us</a></li>
 <li><a href="#">Our Services</a></li>
@@ -22,7 +22,7 @@ return ( <footer>
 </ul>
 </div>
 
-<div class="row">
+<div className="row">
 CampusConnect Copyright © 2023 
 </div>
 </div>

@@ -1,68 +1,117 @@
-import React from "react";
+import React ,{ useState } from "react";
+import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
 
+
 function Login(){
+  const firebase = useFirebase();
+// for sign up
+  const [email ,setEmail] = useState("");
+  const [Password , setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    console.log("signing up a user ...");
+    const res = await firebase.SignupUserWithEmailAndPass(email, Password)
+
+    console.log("Successfull !!");
+    console.log(res);
+  }
+
+  // for login
+
+  const [loginEmail ,setLoginEmail] = useState("");
+  const [loginPassword , setLoginPassword] = useState("");
+  
+  const handleLogin = async (e) => {
+    console.log("logging in a user ...");
+    const res = await firebase.signInUserWithEmailAndPass(loginEmail, loginPassword)
+
+    console.log("Successfull !!");
+    console.log(res);
+  }
+  //
     return ( 
-    <div class="login-container">
-  <div class="login-form">
-    <div class="login-form-inner">
-      <div class="logo"><svg height="512" viewBox="0 0 192 192" width="512" xmlns="http://www.w3.org/2000/svg">
+    <div className="login-container">
+  <div className="login-form">
+    <div className="login-form-inner">
+      <div className="logo"><svg height="512" viewBox="0 0 192 192" width="512" xmlns="http://www.w3.org/2000/svg">
           <path d="m155.109 74.028a4 4 0 0 0 -3.48-2.028h-52.4l8.785-67.123a4.023 4.023 0 0 0 -7.373-2.614l-63.724 111.642a4 4 0 0 0 3.407 6.095h51.617l-6.962 67.224a4.024 4.024 0 0 0 7.411 2.461l62.671-111.63a4 4 0 0 0 .048-4.027z" />
         </svg></div>
       <h1>Login</h1>
 
-      <a href="#" class="rounded-button google-login-button">
-        <span class="google-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path d="M113.47 309.408L95.648 375.94l-65.139 1.378C11.042 341.211 0 299.9 0 256c0-42.451 10.324-82.483 28.624-117.732h.014L86.63 148.9l25.404 57.644c-5.317 15.501-8.215 32.141-8.215 49.456.002 18.792 3.406 36.797 9.651 53.408z" fill="#fbbb00" />
-            <path d="M507.527 208.176C510.467 223.662 512 239.655 512 256c0 18.328-1.927 36.206-5.598 53.451-12.462 58.683-45.025 109.925-90.134 146.187l-.014-.014-73.044-3.727-10.338-64.535c29.932-17.554 53.324-45.025 65.646-77.911h-136.89V208.176h245.899z" fill="#518ef8" />
-            <path d="M416.253 455.624l.014.014C372.396 490.901 316.666 512 256 512c-97.491 0-182.252-54.491-225.491-134.681l82.961-67.91c21.619 57.698 77.278 98.771 142.53 98.771 28.047 0 54.323-7.582 76.87-20.818l83.383 68.262z" fill="#28b446" />
-            <path d="M419.404 58.936l-82.933 67.896C313.136 112.246 285.552 103.82 256 103.82c-66.729 0-123.429 42.957-143.965 102.724l-83.397-68.276h-.014C71.23 56.123 157.06 0 256 0c62.115 0 119.068 22.126 163.404 58.936z" fill="#f14336" />
-          </svg></span>
-        <span>Sign in with google</span>
-      </a>
-
-      <div class="sign-in-seperator">
-        <span>or Sign in with Email</span>
+      <div className="login-form-group">
+        <label name="login-email">Email <span className="required-star">*</span></label>
+        <input type="text" required
+        onChange={e => setLoginEmail(e.target.value)} value={loginEmail}
+        placeholder="email@website.com" id="email " />
+      </div>
+      
+      <div className="login-form-group">
+        <label name="login-pwd">Password <span className="required-star">*</span></label>
+        
+        <input autoComplete="off" required
+        onChange={e => setLoginPassword(e.target.value)} value={loginPassword}
+        type="password" placeholder="Minimum 8 characters" id="login-pwd" />
       </div>
 
-      <div class="login-form-group">
-        <label for="email">Email <span class="required-star">*</span></label>
-        <input type="text" placeholder="email@website.com" id="email" />
-      </div>
-      <div class="login-form-group">
-        <label for="pwd">Password <span class="required-star">*</span></label>
-        <input autocomplete="off" type="text" placeholder="Minimum 8 characters" id="pwd" />
+      <a href="#" className="rounded-button login-cta" onClick={handleLogin}>
+        Login</a>
+
+
+
+
+
+
+
+      <div className="sign-in-seperator">
+        <span><h4>or SigUp  with Email</h4></span>
       </div>
 
-      <div class="login-form-group single-row">
-        <div class="custom-check">
-          <input autocomplete="off" type="checkbox" checked id="remember" /><label for="remember">Remember me</label>
+      <div className="login-form-group">
+        <label name="email">Email <span className="required-star">*</span></label>
+        <input type="text" required
+        onChange={e => setEmail(e.target.value)} value={email}
+        placeholder="email@website.com" id="email" />
+      </div>
+      
+      <div className="login-form-group">
+        <label name="pwd">Password <span className="required-star">*</span></label>
+        
+        <input autoComplete="off" required
+        onChange={e => setPassword(e.target.value)} value={Password}
+        type="password" placeholder="Minimum 8 characters" id="pwd" />
+      </div>
+
+      <div className="login-form-group single-row">
+        <div className="custom-check">
+          <input autoComplete="off" type="checkbox"  id="remember" /><label name="remember">Remember me</label>
         </div>
 
-        <a href="#" class="link forgot-link">Forgot Password ?</a>
+        <a href="#" className="link forgot-link">Forgot Password ?</a>
       </div>
 
-      <a href="#" class="rounded-button login-cta">Login</a>
+      <a href="#" className="rounded-button login-cta" onClick={handleSubmit}>
+        Create Account</a>
 
-      <div class="register-div">Not registered yet? <a href="#" class="link create-account" >Create an account ?</a></div>
+      <div className="register-div">Not registered yet? <a href="#" className="link create-account" >Create an account ?</a></div>
     </div>
 
   </div>
-  <div class="onboarding">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide color-1">
-          <div class="slide-image">
+  <div className="onboarding">
+    <div className="swiper-container">
+      <div className="swiper-wrapper">
+        <div className="swiper-slide color-1">
+          <div className="slide-image">
             <img src="https://picsum.photos/600/600" loading="lazy" alt="" />
           </div>
-          <div class="slide-content">
+          <div className="slide-content">
             <h2>Turn your ideas into reality.</h2>
             <p>Consistent quality and eperience across all platform and devices</p>
           </div>
         </div>
 
       </div>
-      <div class="swiper-pagination"></div>
+      <div className="swiper-pagination"></div>
     </div>
   </div>
   </div>

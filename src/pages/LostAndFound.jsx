@@ -4,7 +4,7 @@ import LostPopUp from "../components/LostPopUp";
 
 function LostAndFound(){
     return(<>
-     <Search placeholder="Seach for the lost item ...."/>
+     <Search placeholder="Seach name the lost item ...."/>
      <LostPopUp />
         <Card />
         </>

@@ -18,7 +18,7 @@ const LostPopUp = () => {
 
   return (
     <div style={{display:"flex", justifyContent: "end" , width:"100%"}}>
-      <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} className='lostpopup-btn'>
+      <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />} classNameName='lostpopup-btn'>
         Add Item
       </Button>
       <Drawer

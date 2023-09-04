@@ -6,7 +6,7 @@ import MarketplaceCard from "../components/MarketPlaceCard";
 
 function Marketplace(){
     return (<>
-        <Search placeholder="Seach for the products........"/>
+        <Search placeholder="Seach name the products........"/>
         <MarketplaceCard />
         
         </>
