@@ -3,9 +3,9 @@ import CardItems from "./CardItems";
 import "../styles/card.css";
 
 function Card(){
-return (<div class="main">
+return (<div className="main">
 
-<ul class="cards">
+<ul className="cards">
   <CardItems  src={"https://picsum.photos/500/300"} 
         card_title={"Card Grid Layout"} card_text={"Product lost details should be provided here extra information" }/>
    <CardItems  src={"https://picsum.photos/500/300"} 
