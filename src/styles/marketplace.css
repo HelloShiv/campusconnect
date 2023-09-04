@@ -128,3 +128,11 @@ img {
   height: 300px;
   width: auto;
 }
+
+.lostpopup-btn{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: 1%;
+  margin-right: 25%;
+}
