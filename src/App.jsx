@@ -7,6 +7,7 @@ import Query from "./pages/Query";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
+import SignUp from "./pages/SignUp";
 
 function App(){
     
@@ -20,6 +21,7 @@ function App(){
         <Route path='/Marketplace' element={<Marketplace />}/>
         <Route path='/Query' element={<Query />}/>
         <Route path='/Login' element={<Login />}/>
+        <Route path='/SignUp' element={<SignUp/>}/>
         </Routes>
         <Footer />
        
