@@ -1,7 +1,11 @@
-import { createContext ,useContext} from "react";
+import { createContext ,useContext ,useState ,useEffect} from "react";
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword , sendEmailVerification ,
-    signInWithEmailAndPassword} from 'firebase/auth'
+import { getAuth, 
+    createUserWithEmailAndPassword , 
+    sendEmailVerification ,
+    onAuthStateChanged,
+    signInWithEmailAndPassword} 
+    from 'firebase/auth'
 import firebaseConfig from "./Api";
 import Password from "antd/es/input/Password";
 
@@ -16,6 +20,17 @@ const firebaseAuth = getAuth(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
+    const [user ,setUser] = useState("");
+
+
+    useEffect(() =>{
+        onAuthStateChanged(firebaseAuth ,user =>{
+           
+            if(user) setUser(user)
+            else setUser(null);
+        })
+    })
+
     const SignupUserWithEmailAndPass = async (email, password) => { // Changed parameter names
         try {
           const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
@@ -29,7 +44,12 @@ export const FirebaseProvider = (props) => {
 
       const signInUserWithEmailAndPass = (email , password) => signInWithEmailAndPassword(firebaseAuth,email,password);
 
-    return <FirebaseContext.Provider value={{SignupUserWithEmailAndPass ,signInUserWithEmailAndPass}}>
+      const isLoggedIn = user ? true : false;
+
+    return <FirebaseContext.Provider 
+    value={{SignupUserWithEmailAndPass ,
+            signInUserWithEmailAndPass,
+            isLoggedIn}}>
         {props.children}
         </FirebaseContext.Provider>
 };
