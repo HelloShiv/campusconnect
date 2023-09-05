@@ -4,6 +4,7 @@ import { getAuth,
     createUserWithEmailAndPassword , 
     sendEmailVerification ,
     onAuthStateChanged,
+    signOut,
     signInWithEmailAndPassword} 
     from 'firebase/auth'
 import firebaseConfig from "./Api";
@@ -20,7 +21,7 @@ const firebaseAuth = getAuth(firebaseApp);
 
 export const FirebaseProvider = (props) => {
 
-    const [user ,setUser] = useState("");
+    const [user ,setUser] = useState(null);
 
 
     useEffect(() =>{
@@ -46,9 +47,14 @@ export const FirebaseProvider = (props) => {
 
       const isLoggedIn = user ? true : false;
 
+      const SignOut = () => {
+        return signOut(firebaseAuth);
+      };
+
     return <FirebaseContext.Provider 
     value={{SignupUserWithEmailAndPass ,
             signInUserWithEmailAndPass,
+            SignOut,
             isLoggedIn}}>
         {props.children}
         </FirebaseContext.Provider>

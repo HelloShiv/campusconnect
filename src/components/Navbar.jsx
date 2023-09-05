@@ -1,26 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/navbar.css";
+import { useNavigate } from "react-router-dom";
+import { useFirebase } from "../context/Firebase";
 
-function Navbar(){
-    return  <nav className="navbar">
-    <div className="navbar-container container">
-        <input type="checkbox" name="" id=""/>
+function Navbar() {
+  const firebase = useFirebase();
+  const navigate = useNavigate();
+  const [loggedInState, setLoggedInState] = useState("Log In"); // Default to "Log In"
+    
+  useEffect(() => {
+    // Use an effect to update the loggedInState when the authentication state changes.
+    if (firebase.isLoggedIn) {
+      setLoggedInState("Log Out");
+    } else {
+      setLoggedInState("Log In");
+    }
+  }, [firebase.isLoggedIn]);
+
+  async function logout() {
+    if(firebase.isLoggedIn){
+    try {
+      await firebase.SignOut();
+      console.log("Logged Out");
+      navigate("/Login");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+    }
+  }
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container container">
+        <input type="checkbox" name="" id="" />
         <div className="hamburger-lines">
-            <span className="line line1"></span>
-            <span className="line line2"></span>
-            <span className="line line3"></span>
+          <span className="line line1"></span>
+          <span className="line line2"></span>
+          <span className="line line3"></span>
         </div>
         <ul className="menu-items">
-            <li><a href="/">Home</a></li>
-            <li><a href="/LostAndFound">Lost&Found</a></li>
-            <li><a href="/Marketplace">Marketplace</a></li>
-            <li><a href="/Query">Query</a></li>
-            <li><a href="/Login">Login</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/LostAndFound">Lost&Found</a></li>
+          <li><a href="/Marketplace">Marketplace</a></li>
+          <li><a href="/Query">Query</a></li>
+          <li><a href='/Login' onClick={logout}>{loggedInState}</a></li>
         </ul>
         <h1 className="logo">CampusConnect</h1>
-    </div>
-</nav>
-
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;
