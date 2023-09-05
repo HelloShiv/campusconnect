@@ -1,11 +1,17 @@
-import React ,{ useState } from "react";
+import React ,{ useEffect, useState } from "react";
 import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
 
 
 function Login(){
   const firebase = useFirebase();
-
+  const navigate = useNavigate();
+  useEffect(() => {
+  if(firebase.isLoggedIn){
+    navigate('/')
+  }
+  });
 
   // for login
 

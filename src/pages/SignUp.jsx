@@ -1,12 +1,21 @@
-import React , { useState }from "react";
+import React , { useEffect, useState }from "react";
 import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
 
 function SignUp(){
     const firebase = useFirebase();
     const [username ,setUserName] = useState("");
     const [email ,setEmail] = useState("");
     const [Password , setPassword] = useState("");
+
+
+    const navigate = useNavigate();
+    useEffect(() => {
+    if(firebase.isLoggedIn){
+      navigate('/')
+    }
+    });
   
     const handleSubmit = async (e) => {
       console.log("signing up a user ...");
@@ -32,6 +41,8 @@ function SignUp(){
       console.log("Successfull !!");
       console.log(res);
     }
+
+    
 
     return ( 
     <div className="login-container">

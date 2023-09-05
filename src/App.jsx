@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import SignUp from "./pages/SignUp";
 
 function App(){
-    
+
     return (
         <div>
         <Navbar />
