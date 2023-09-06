@@ -22,15 +22,18 @@ function SignUp(){
       console.log("signing up a user ...");
       const res = await firebase.SignupUserWithEmailAndPass(email, Password )
       .then((userCredential) => {
+        message.success("Sign up successful! Please check your email to verify your account.");
         // User signed up successfully
         const user = userCredential.user;
         // Now, you can add the username
         const username = "desired_username";
         return user.updateProfile({
           displayName: username
+          
         });
       })
       .then(() => {
+        
         // Username added to the user's profile successfully
         console.log("Username added.");
       })
@@ -77,7 +80,7 @@ function SignUp(){
       </div>
       
 
-      <a href="#" className="rounded-button login-cta" onClick={handleSubmit}>Login</a>
+      <a href="#" className="rounded-button login-cta" onClick={handleSubmit}>SignUp</a>
 
       <div className="register-div"> Are you Registered <a href="/Login" className="link create-account" >Login</a></div>
     </div>
