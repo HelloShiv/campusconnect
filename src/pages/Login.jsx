@@ -9,6 +9,7 @@ import { message , Alert } from "antd";
 function Login(){
   const firebase = useFirebase();
   const navigate = useNavigate();
+  
   useEffect(() => {
   if(firebase.isLoggedIn){
     navigate('/')

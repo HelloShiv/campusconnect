@@ -53,6 +53,7 @@ export const FirebaseProvider = (props) => {
     signInWithEmailAndPassword(firebaseAuth, email, password);
 
   const isLoggedIn = !!user; // Use double negation to convert to a boolean.
+  const isEmailVerified = user?.emailVerified;
 
   const SignOut = () => {
     return signOut(firebaseAuth);
@@ -72,6 +73,7 @@ export const FirebaseProvider = (props) => {
         signInUserWithEmailAndPass,
         SignOut,
         isLoggedIn,
+        isEmailVerified,
       }}
     >
       {props.children}
