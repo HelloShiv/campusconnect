@@ -2,6 +2,7 @@ import React ,{ useEffect, useState } from "react";
 import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
+import { message , Alert } from "antd";
 
 
 
@@ -20,11 +21,21 @@ function Login(){
   const [loginPassword , setLoginPassword] = useState("");
   
   const handleLogin = async (e) => {
-    console.log("logging in a user ...");
-    const res = await firebase.signInUserWithEmailAndPass(loginEmail, loginPassword)
-    console.log("Successfull !!");
-    console.log(res);
-  }
+    try {
+      console.log("Logging in a user...");
+      const res = await firebase.signInUserWithEmailAndPass(loginEmail, loginPassword);
+      
+      // Display a success message
+      message.success("Login successful!");
+  
+      // Redirect the user or perform any other necessary actions
+      navigate('/');
+    } catch (error) {   
+      // Display an error message
+      message.error("Login failed. Please check your email and password.");
+    }
+  };
+  
   
     return ( 
     <div className="login-container">

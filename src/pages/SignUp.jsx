@@ -2,6 +2,7 @@ import React , { useEffect, useState }from "react";
 import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 function SignUp(){
     const firebase = useFirebase();
