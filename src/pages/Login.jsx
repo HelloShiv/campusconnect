@@ -4,6 +4,7 @@ import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 
 
+
 function Login(){
   const firebase = useFirebase();
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Login(){
     console.log("Successfull !!");
     console.log(res);
   }
-  //
+  
     return ( 
     <div className="login-container">
   <div className="login-form">
@@ -54,39 +55,6 @@ function Login(){
 
 
 
-
-
-
-
-      {/* <div className="sign-in-seperator">
-        <span><h4>or SigUp  with Email</h4></span>
-      </div>
-
-      <div className="login-form-group">
-        <label name="email">Email <span className="required-star">*</span></label>
-        <input type="text" required
-        onChange={e => setEmail(e.target.value)} value={email}
-        placeholder="email@website.com" id="email" />
-      </div>
-      
-      <div className="login-form-group">
-        <label name="pwd">Password <span className="required-star">*</span></label>
-        
-        <input autoComplete="off" required
-        onChange={e => setPassword(e.target.value)} value={Password}
-        type="password" placeholder="Minimum 8 characters" id="pwd" />
-      </div>
-
-      <div className="login-form-group single-row">
-        <div className="custom-check">
-          <input autoComplete="off" type="checkbox"  id="remember" /><label name="remember">Remember me</label>
-        </div>
-
-        <a href="#" className="link forgot-link">Forgot Password ?</a>
-      </div> */}
-{/* 
-      <a href="#" className="rounded-button login-cta" onClick={handleSubmit}>
-        Create Account</a> */}
 
       <div className="register-div">Not registered yet? <a href="/SignUp" className="link create-account" >Create an account ?</a></div>
     </div>

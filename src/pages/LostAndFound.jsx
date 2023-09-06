@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function LostAndFound(){
-//   const firebase = useFirebase();
-//   const navigate = useNavigate();
-//   useEffect(() => { 
-//   if(firebase.isLoggedIn == false){
-//     navigate('/Login')
-//   }
-//   });
+  const firebase = useFirebase();
+  const navigate = useNavigate();
+  useEffect(() => { 
+  if(firebase.isLoggedIn == false){
+    navigate('/Login')
+  }
+  });
+
+console.log(firebase.isLoggedIn);
     return(<>
      <Search placeholder="Seach name the lost item ...."/>
      <LostPopUp />

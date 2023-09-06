@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LostAndFound from "./pages/LostAndFound"
@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
 import SignUp from "./pages/SignUp";
+
 
 function App(){
 
