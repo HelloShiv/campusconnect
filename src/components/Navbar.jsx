@@ -23,7 +23,6 @@ function Navbar() {
       try {
         await firebase.SignOut();
         message.success("Logged out successfully");
-        console.log("Logged Out");
         navigate("/Login");
         // Display a logout success message using Ant Design message
       } catch (error) {

@@ -23,7 +23,6 @@ function Login(){
   
   const handleLogin = async (e) => {
     try {
-      console.log("Logging in a user...");
       const res = await firebase.signInUserWithEmailAndPass(loginEmail, loginPassword);
       
       // Display a success message
@@ -59,7 +58,7 @@ function Login(){
         
         <input autoComplete="off" required
         onChange={e => setLoginPassword(e.target.value)} value={loginPassword}
-        type="password" placeholder="Minimum 8 characters" id="login-pwd" />
+        type="password" placeholder="Enter your Password" id="login-pwd" />
       </div>
 
       <a href="#" className="rounded-button login-cta" onClick={handleLogin}>
