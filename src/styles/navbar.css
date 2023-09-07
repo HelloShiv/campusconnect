@@ -69,6 +69,7 @@
 @media (max-width: 378px){
     .logo{
         font-size: 2rem;
+        padding-right: 5%;
     }
 }
 
