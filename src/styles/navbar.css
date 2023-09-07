@@ -72,6 +72,10 @@
         padding-right: 5%;
         padding-top: 1%;
     }
+
+    .hamburger-lines{
+        margin-left: -5%;
+    }
 }
 
 @media (max-width: 768px){
