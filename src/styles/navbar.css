@@ -45,7 +45,7 @@
 .logo{
     order: 1;
     font-size: 2.3rem;
-    margin-right: -5px;  
+    margin-right: -9px;  
 
 }
 
@@ -74,7 +74,7 @@
     .navbar-container input[type="checkbox"],
     .navbar-container .hamburger-lines{
         display: block;
-        margin-left: -23px; 
+        margin-left: -38px; 
     }
 
     .navbar-container{
