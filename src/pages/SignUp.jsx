@@ -4,47 +4,68 @@ import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 
-function SignUp(){
-    const firebase = useFirebase();
-    const [username ,setUserName] = useState("");
-    const [email ,setEmail] = useState("");
-    const [Password , setPassword] = useState("");
+function SignUp() {
+  const firebase = useFirebase();
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    useEffect(() => {
-    if(firebase.isLoggedIn){
-      navigate('/')
+  useEffect(() => {
+    if (firebase.isLoggedIn) {
+      navigate("/");
     }
-    });
-  
-    const handleSubmit = async (e) => {
-      console.log("signing up a user ...");
-      const res = await firebase.SignupUserWithEmailAndPass(email, Password )
-      .then((userCredential) => {
-        message.success("Sign up successful! Please check your email to verify your account.");
-        // User signed up successfully
-        const user = userCredential.user;
-        // Now, you can add the username
-        const username = "desired_username";
-        return user.updateProfile({
-          displayName: username
-          
-        });
-      })
-      .then(() => {
-        
-        // Username added to the user's profile successfully
-        console.log("Username added.");
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Error signing up:", error);
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if name, email, and password are provided
+    if (!username ) {
+      message.error("Please provide your name.");
+      return;
+    } else if (!email){
+      message.error("Please provide email.");
+      return;
+    } else if (!password){
+      message.error("Please provide password.");
+      return;
+    } else if (password.length < 8) {
+      message.warning("Password is too short. It should be at least 8 characters.");
+      return;
+    }
+
+    // Check if the email ends with ".edu.in"
+    if (!email.endsWith(".edu.in")) {
+      message.warning("Email should end with .edu.in");
+      return;
+    }
+
+    try {
+      const userCredential = await firebase.SignupUserWithEmailAndPass(
+        email,
+        password
+      );
+
+      // User signed up successfully
+      const user = userCredential.user;
+
+      // Now, you can add the username
+      await user.updateProfile({
+        displayName: username,
       });
-  
-      console.log("Successfull !!");
-      console.log(res);
+
+      message.success(
+        "Sign up successful! Please check your email to verify your account."
+      );
+
+    } catch (error) {
+      // Handle errors
+      console.error("Error signing up:", error);
+      message.error("Error signing up. Please try again.");
     }
+  };
 
     
 
@@ -75,7 +96,7 @@ function SignUp(){
         <label name="pwd">Password <span className="required-star">*</span></label>
         
         <input autoComplete="off" required
-        onChange={e => setPassword(e.target.value)} value={Password}
+        onChange={e => setPassword(e.target.value)} value={password}
         type="password" placeholder="Minimum 8 characters" id="pwd" />
       </div>
       

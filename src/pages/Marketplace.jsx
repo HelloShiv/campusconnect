@@ -10,7 +10,6 @@
   function Marketplace(){
     const firebase = useFirebase();
     const navigate = useNavigate();
-    console.log(firebase.isLoggedIn);
     const [loginStatus , setLoginStatus] = useState(firebase.isLoggedIn);
     
     useEffect(() => {

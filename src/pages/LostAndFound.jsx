@@ -33,7 +33,6 @@ function LostAndFound(){
   }, [firebase.isLoggedIn, navigate]);
     
 
-console.log(firebase.isLoggedIn);
     return(<>
      <Search placeholder="Seach name the lost item ...."/>
      <LostPopUp />
