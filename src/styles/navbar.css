@@ -66,11 +66,14 @@
     color: #117964;
 }
 
-@media (max-width: 378px){
+@media (max-width: 450px){
     .logo{
         font-size: 2rem;
         padding-right: 5%;
         padding-top: 1%;
+    }
+    .hamburger-lines{
+        margin-left:-5%;
     }
 }
 
