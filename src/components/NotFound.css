@@ -1,0 +1,22 @@
+/* NotFound.css */
+.not-found {
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    height: 100vh; /* 100% of viewport height */
+  }
+  
+  .centered-content {
+    text-align: center;
+  }
+  
+  .centered-content h2 {
+    font-size: 24px;
+    color: #f00; /* Red color for the heading */
+  }
+  
+  .centered-content p {
+    font-size: 18px;
+    color: #333; /* Dark gray color for the text */
+  }
+  
