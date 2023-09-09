@@ -5,6 +5,7 @@
   import { useFirebase } from "../context/Firebase";
   import { useNavigate } from "react-router-dom";
   import { Button, notification } from "antd";
+  import MarketPlacePopUp from "../components/MarketPlacePopUp"
 
 
   function Marketplace(){
@@ -36,6 +37,7 @@
 
       return (<>
           <Search placeholder="Seach name the products........"/>
+          <MarketPlacePopUp />
           <MarketplaceCard />
           
           </>

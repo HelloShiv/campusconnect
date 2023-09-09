@@ -129,7 +129,14 @@ img {
   width: auto;
 }
 
-.lostpopup-btn{
+.lostpopup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: 1%;
+  margin-right: 25%;
+}
+.MarketPlacePopUp-btn{
   display: flex;
   align-items: center;
   justify-content: end;

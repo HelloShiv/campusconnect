@@ -80,7 +80,9 @@ export const FirebaseProvider = (props) => {
   const listAllLostAndFoundItems = () => {
     return getDocs(collection(firestore, 'lostandfound'));
   }
-
+  const listAllMarketplaceItems = () => {
+    return getDocs(collection(firestore, 'marketplace'));
+  }
 
 
 
@@ -120,6 +122,46 @@ export const FirebaseProvider = (props) => {
     }
   }
   
+  const handleMarketPlaceListing = async (formData) => {
+    try {
+      const productName = formData['Product-Name'];
+      const phoneNumber = formData['Contact'];
+      const description = formData['description'];
+      const Amount = formData['Amount'];
+      const photoList = formData['photoList'];
+      const uploadedPhoto = photoList[0];
+  
+      if (!uploadedPhoto) {
+        throw new Error("No photo provided.");
+      }
+  
+      console.log("this is the out",productName, phoneNumber, description,Amount, uploadedPhoto);
+  
+      const imageRef = ref(storage, `uploads/marketplace/images/${Date.now()}-${uploadedPhoto.name}`);
+      const uploadResult = await uploadBytes(imageRef, uploadedPhoto);
+      
+      const docData = {
+        productName,
+        phoneNumber,
+        description,
+        Amount,
+        imageURL: uploadResult.ref.fullPath,
+        userID: user.uid,
+        userEmail: user.email
+      };
+      console.log(docData);
+      await addDoc(collection(firestore, 'marketplace'), docData);
+      
+      return true; // Indicates success
+    } catch (error) {
+      message.error(error);
+      console.error("Error uploading and adding document:", error);
+      return false; // Indicates failure
+    }
+  }
+
+
+
 
   const getImageURL = async (path) => {
     try {
@@ -156,6 +198,8 @@ export const FirebaseProvider = (props) => {
         handleNewLostAndFoundListing,
         listAllLostAndFoundItems,
         getImageURL,
+        handleMarketPlaceListing,
+        listAllMarketplaceItems,
         isLoggedIn,
         isEmailVerified,
       }}
