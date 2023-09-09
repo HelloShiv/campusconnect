@@ -7,11 +7,12 @@ import { getAuth,
     signOut,
     signInWithEmailAndPassword} 
     from 'firebase/auth';
-import Password from "antd/es/input/Password";
 import { Space, Spin } from 'antd';
-
+import  {Firestore, getFirestore , collection , addDoc ,getDocs} from'firebase/firestore';
+import { getStorage , ref , uploadBytes} from "firebase/storage";
 
 export const FirebaseContext = createContext(null);
+
 
 
 export const useFirebase = () => useContext(FirebaseContext);
@@ -31,6 +32,8 @@ const firebaseConfig = {
 
 export  const {firebaseApp} = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);
+const storage = getStorage(firebaseApp);
 
 export const FirebaseProvider = (props) => {
   const [user, setUser] = useState(null);
@@ -71,6 +74,34 @@ export const FirebaseProvider = (props) => {
     return signOut(firebaseAuth);
   };
 
+  // const g
+
+
+
+
+  const handleNewLostAndFoundListing = async (formData) => {
+    const productName = formData['Product-Name'];
+    const phoneNumber = formData['Contact'];
+    const description = formData['description'];
+    const photoList = formData['photoList'];
+    const uploadedPhoto = photoList[0]; 
+    console.log(productName,phoneNumber,description,uploadedPhoto);
+
+    const imageRef = ref(storage , `uploads/lostandfound/images/${Date.now()}-${uploadedPhoto.name}`);
+    const uploadReuslt = await uploadBytes(imageRef ,uploadedPhoto);
+    return await addDoc(collection(firestore , 'lostandfound'),{
+      productName,
+      phoneNumber,
+      description,
+      imageURL: uploadReuslt.ref.fullPath,
+      userID: user.uid,
+      userEmail: user.email
+    });
+  }
+
+
+
+// buffering  ring status
   if (isLoading) {
     return <div style={{display:"flex" ,justifyContent:"center" ,alignItems:"center" ,innerWidth:"100vw",height:"100vh"}}> 
             
@@ -84,6 +115,7 @@ export const FirebaseProvider = (props) => {
         SignupUserWithEmailAndPass,
         signInUserWithEmailAndPass,
         SignOut,
+        handleNewLostAndFoundListing,
         isLoggedIn,
         isEmailVerified,
       }}
