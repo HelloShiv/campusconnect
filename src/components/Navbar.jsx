@@ -34,7 +34,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar">
+    <nav className="navbar prevent-select">
       <div className="navbar-container container">
         <input type="checkbox" name="" id="" />
         <div className="hamburger-lines">
@@ -49,7 +49,7 @@ function Navbar() {
           <li><a href="/Query">Query</a></li>
           <li><a href='/Login' onClick={logout}>{loggedInState}</a></li>
         </ul>
-        <h1 className="logo">CampusConnect</h1>
+        <h1 className="logo ">CampusConnect</h1>
       </div>
     </nav>
   );
