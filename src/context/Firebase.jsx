@@ -7,7 +7,7 @@ import { getAuth,
     signOut,
     signInWithEmailAndPassword} 
     from 'firebase/auth';
-import { Space, Spin } from 'antd';
+import { Space, Spin, message } from 'antd';
 import  {Firestore, getFirestore , collection , addDoc ,getDocs} from'firebase/firestore';
 import { getStorage , ref , uploadBytes ,getDownloadURL} from "firebase/storage";
 
@@ -114,6 +114,7 @@ export const FirebaseProvider = (props) => {
       
       return true; // Indicates success
     } catch (error) {
+      message.error(error);
       console.error("Error uploading and adding document:", error);
       return false; // Indicates failure
     }
