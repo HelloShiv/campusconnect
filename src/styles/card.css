@@ -31,7 +31,8 @@ h1 {
 }
 
 img {
-  height: auto;
+  height: 400px;
+  width: auto;
   max-width: 100%;
   vertical-align: middle;
 }

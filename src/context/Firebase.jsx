@@ -9,7 +9,7 @@ import { getAuth,
     from 'firebase/auth';
 import { Space, Spin } from 'antd';
 import  {Firestore, getFirestore , collection , addDoc ,getDocs} from'firebase/firestore';
-import { getStorage , ref , uploadBytes} from "firebase/storage";
+import { getStorage , ref , uploadBytes ,getDownloadURL} from "firebase/storage";
 
 export const FirebaseContext = createContext(null);
 
@@ -34,6 +34,9 @@ export  const {firebaseApp} = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
+
+
+
 
 export const FirebaseProvider = (props) => {
   const [user, setUser] = useState(null);
@@ -74,30 +77,64 @@ export const FirebaseProvider = (props) => {
     return signOut(firebaseAuth);
   };
 
-  // const g
+  const listAllLostAndFoundItems = () => {
+    return getDocs(collection(firestore, 'lostandfound'));
+  }
 
 
 
 
   const handleNewLostAndFoundListing = async (formData) => {
-    const productName = formData['Product-Name'];
-    const phoneNumber = formData['Contact'];
-    const description = formData['description'];
-    const photoList = formData['photoList'];
-    const uploadedPhoto = photoList[0]; 
-    console.log(productName,phoneNumber,description,uploadedPhoto);
-
-    const imageRef = ref(storage , `uploads/lostandfound/images/${Date.now()}-${uploadedPhoto.name}`);
-    const uploadReuslt = await uploadBytes(imageRef ,uploadedPhoto);
-    return await addDoc(collection(firestore , 'lostandfound'),{
-      productName,
-      phoneNumber,
-      description,
-      imageURL: uploadReuslt.ref.fullPath,
-      userID: user.uid,
-      userEmail: user.email
-    });
+    try {
+      const productName = formData['Product-Name'];
+      const phoneNumber = formData['Contact'];
+      const description = formData['description'];
+      const photoList = formData['photoList'];
+      const uploadedPhoto = photoList[0];
+  
+      if (!uploadedPhoto) {
+        throw new Error("No photo provided.");
+      }
+  
+      console.log(productName, phoneNumber, description, uploadedPhoto);
+  
+      const imageRef = ref(storage, `uploads/lostandfound/images/${Date.now()}-${uploadedPhoto.name}`);
+      const uploadResult = await uploadBytes(imageRef, uploadedPhoto);
+      
+      const docData = {
+        productName,
+        phoneNumber,
+        description,
+        imageURL: uploadResult.ref.fullPath,
+        userID: user.uid,
+        userEmail: user.email
+      };
+  
+      await addDoc(collection(firestore, 'lostandfound'), docData);
+      
+      return true; // Indicates success
+    } catch (error) {
+      console.error("Error uploading and adding document:", error);
+      return false; // Indicates failure
+    }
   }
+  
+
+  const getImageURL = async (path) => {
+    try {
+      if (path) {
+        const downloadURL = await getDownloadURL(ref(storage, path));
+        return downloadURL;
+      } else {
+        console.error("Invalid path provided for getImageURL.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error getting download URL:", error);
+      return null;
+    }
+  }
+  
 
 
 
@@ -116,6 +153,8 @@ export const FirebaseProvider = (props) => {
         signInUserWithEmailAndPass,
         SignOut,
         handleNewLostAndFoundListing,
+        listAllLostAndFoundItems,
+        getImageURL,
         isLoggedIn,
         isEmailVerified,
       }}
