@@ -152,7 +152,7 @@ function Login() {
                 />
               </div>
               <div className="slide-content">
-                <h2>Turn your ideas into reality.</h2>
+                <h2>Connect with campus</h2>
                 <p>
                   Consistent quality and eperience across all platform and
                   devices

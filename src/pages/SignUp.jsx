@@ -147,7 +147,7 @@ function SignUp() {
               <img src={campus} style={{width:"600px" , height:"600px"}} loading="lazy" alt="" />
               </div>
               <div className="slide-content">
-                <h2>Turn your ideas into reality.</h2>
+                <h2>Connect with Campus</h2>
                 <p>Consistent quality and experience across all platforms and devices</p>
               </div>
             </div>
