@@ -1,0 +1,212 @@
+.desktop-1 {
+    background-color: #ffffff;
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .desktop-1 .div-1 {
+    background-color: #ffffff;
+    height: 2048px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .desktop-1 .overlap {
+    height: 369px;
+    left: 834px;
+    position: absolute;
+    top: 769px;
+    width: 414px;
+  }
+  
+  .desktop-1 .image {
+    height: 210px;
+    left: 0;
+    position: absolute;
+    top: 159px;
+    width: 231px;
+  }
+  
+  .desktop-1 .img {
+    height: 210px;
+    left: 194px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 220px;
+  }
+  
+  .desktop-1 .overlap-group {
+    background-image: url(C:\Users\gupta\Desktop\test\campusconnect\src\styles\rectangle-43.png);
+    background-size: 100% 100%;
+    height: 971px;
+    left: 126px;
+    position: absolute;
+    top: 787px;
+    width: 606px;
+  }
+  
+  .desktop-1 .lost-found {
+    height: 20px;
+    left: 76px;
+    position: absolute;
+    top: 121px;
+    width: 192px;
+  }
+  
+  .desktop-1 .report-lost-items {
+    height: 47px;
+    left: 100px;
+    position: absolute;
+    top: 167px;
+    width: 406px;
+  }
+  
+  .desktop-1 .marketplace {
+    height: 25px;
+    left: 73px;
+    position: absolute;
+    top: 299px;
+    width: 186px;
+  }
+  
+  .desktop-1 .explore-listings-or {
+    height: 73px;
+    left: 101px;
+    position: absolute;
+    top: 345px;
+    width: 403px;
+  }
+  
+  .desktop-1 .safety-measures {
+    height: 26px;
+    left: 78px;
+    position: absolute;
+    top: 515px;
+    width: 243px;
+  }
+  
+  .desktop-1 .rest-easy-knowing {
+    height: 47px;
+    left: 107px;
+    position: absolute;
+    top: 566px;
+    width: 362px;
+  }
+  
+  .desktop-1 .notifications {
+    height: 21px;
+    left: 75px;
+    position: absolute;
+    top: 717px;
+    width: 190px;
+  }
+  
+  .desktop-1 .get-real-time {
+    height: 76px;
+    left: 107px;
+    position: absolute;
+    top: 768px;
+    width: 391px;
+  }
+  
+  .desktop-1 .why-choose {
+    height: 67px;
+    left: 166px;
+    position: absolute;
+    top: 90px;
+    width: 1079px;
+  }
+  
+  .desktop-1 .vector {
+    height: 4px;
+    left: 614px;
+    position: absolute;
+    top: 230px;
+    width: 209px;
+  }
+  
+  .desktop-1 .trust {
+    height: 24px;
+    left: 589px;
+    position: absolute;
+    top: 364px;
+    width: 81px;
+  }
+  
+  .desktop-1 .connect-with-fellow {
+    height: 105px;
+    left: 589px;
+    position: absolute;
+    top: 434px;
+    width: 265px;
+  }
+  
+  .desktop-1 .affordability {
+    height: 31px;
+    left: 987px;
+    position: absolute;
+    top: 363px;
+    width: 195px;
+  }
+  
+  .desktop-1 .discover-budget {
+    height: 73px;
+    left: 987px;
+    position: absolute;
+    top: 433px;
+    width: 277px;
+  }
+  
+  .desktop-1 .efficency {
+    height: 31px;
+    left: 169px;
+    position: absolute;
+    top: 363px;
+    width: 146px;
+  }
+  
+  .desktop-1 .quickly-report-lost {
+    height: 76px;
+    left: 166px;
+    position: absolute;
+    top: 433px;
+    width: 279px;
+  }
+  
+  .desktop-1 .overlap-group-2 {
+    height: 356px;
+    left: 823px;
+    position: absolute;
+    top: 1423px;
+    width: 425px;
+  }
+  
+  .desktop-1 .image-2 {
+    height: 210px;
+    left: 158px;
+    object-fit: cover;
+    position: absolute;
+    top: 146px;
+    width: 267px;
+  }
+  
+  .desktop-1 .image-3 {
+    height: 210px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 213px;
+  }
+  
+  .desktop-1 .how-it-works {
+    height: 167px;
+    left: 756px;
+    position: absolute;
+    top: 1204px;
+    width: 306px;
+  }
+  

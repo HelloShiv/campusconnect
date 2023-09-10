@@ -1,0 +1,143 @@
+.desktop {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .desktop .div {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .desktop .overlap-group {
+    background-image: url(C:\Users\gupta\Desktop\test\campusconnect\src\styles\rectangle-18.png);
+    background-size: 100% 100%;
+    height: 111px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+  }
+  
+  .desktop .home {
+    height: 13px;
+    left: 586px;
+    position: absolute;
+    top: 38px;
+    width: 47px;
+  }
+  
+  .desktop .lost-found {
+    height: 13px;
+    left: 697px;
+    position: absolute;
+    top: 37px;
+    width: 97px;
+  }
+  
+  .desktop .store {
+    height: 13px;
+    left: 858px;
+    position: absolute;
+    top: 37px;
+    width: 43px;
+  }
+  
+  .desktop .login {
+    height: 17px;
+    left: 1090px;
+    position: absolute;
+    top: 36px;
+    width: 44px;
+  }
+  
+  .desktop .overlap {
+    background-image: url(C:\Users\gupta\Desktop\test\campusconnect\src\styles\rectangle-21.png);
+    background-size: 100% 100%;
+    height: 27px;
+    left: 1198px;
+    position: absolute;
+    top: 30px;
+    width: 77px;
+  }
+  
+  .desktop .sign-up {
+    height: 17px;
+    left: 7px;
+    position: absolute;
+    top: 6px;
+    width: 63px;
+  }
+  
+  .desktop .campus-connect {
+    height: 25px;
+    left: 170px;
+    position: absolute;
+    top: 33px;
+    width: 220px;
+  }
+  
+  .desktop .CONNECT {
+    height: 71px;
+    left: 170px;
+    position: absolute;
+    top: 281px;
+    width: 470px;
+  }
+  
+  .desktop .CAMPUS {
+    height: 60px;
+    left: 171px;
+    position: absolute;
+    top: 200px;
+    width: 347px;
+  }
+  
+  .desktop .discover-lost {
+    height: 37px;
+    left: 699px;
+    position: absolute;
+    top: 200px;
+    width: 562px;
+  }
+  
+  .desktop .are-you-tired-of {
+    height: 134px;
+    left: 697px;
+    position: absolute;
+    top: 283px;
+    width: 560px;
+  }
+  
+  .desktop .get-started-wrapper {
+    background-image: url(C:\Users\gupta\Desktop\test\campusconnect\src\styles\rectangle-37.png);
+    background-size: 100% 100%;
+    height: 49px;
+    left: 696px;
+    position: absolute;
+    top: 433px;
+    width: 576px;
+  }
+  
+  .desktop .get-started {
+    height: 19px;
+    left: 214px;
+    position: absolute;
+    top: 15px;
+    width: 141px;
+  }
+  
+  .desktop .jecrc {
+    height: 368px;
+    left: 167px;
+    position: absolute;
+    top: 544px;
+    width: 1102px;
+  }
+  
+  
+  
