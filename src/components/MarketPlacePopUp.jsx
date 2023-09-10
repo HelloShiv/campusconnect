@@ -54,12 +54,17 @@ const MarketPlacePopUp = () => {
         // Check if all required fields are filled
         if (Object.values(values).every((value) => value !== undefined && value !== '')) {
           // Submit the form data here
-           firebase.handleMarketPlaceListing(values);
+          firebase.handleMarketPlaceListing(values);
           console.log('Form data submitted:', values);
           onClose(); // Close the drawer after submission
+  
+          // Display a success notification
+          notification.success({
+            message: 'Form Submission Successful',
+            description: 'Your form data has been successfully submitted.',
+          });
         } else {
           // Display an error notification or message to the user
-          // You can use Ant Design's notification component or a custom error message.
           notification.error({
             message: 'Form Submission Error',
             description: 'Please fill in all required fields.',
