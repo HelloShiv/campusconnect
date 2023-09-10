@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Radio, Space, Divider  } from 'antd';
 import "../styles/home.css"
 import lostAndFoundImage from "../images/lostandfound.jpg";
+import campus from "../images/campus.jpg"
 
 function Home(){
 
@@ -26,7 +27,7 @@ function Home(){
         <div className="homepage-space" />
 
         <div className="coverPhoto">
-            <img src="https://picsum.photos/1727/1050" alt="space cover photo" />
+            <img src={campus} alt="space cover photo" />
         </div>
 
         <div className="homepage-space" />
