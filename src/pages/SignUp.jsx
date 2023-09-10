@@ -22,53 +22,51 @@ function SignUp() {
     e.preventDefault();
 
     // Check if name, email, and password are provided
-    if (!username ) {
-      message.error("Please provide your name.");
-      return;
-    } else if (!email){
-      message.error("Please provide email.");
-      return;
-    } else if (!password){
-      message.error("Please provide password.");
-      return;
-    } else if (password.length < 8) {
-      message.warning("Password is too short. It should be at least 8 characters.");
-      return;
-    }
+     if (!username ) {
+       message.error("Please provide your name.");
+       return;
+     } else if (!email){
+       message.error("Please provide email.");
+       return;
+     } else if (!password){
+       message.error("Please provide password.");
+       return;
+     } else if (password.length < 8) {
+       message.warning("Password is too short. It should be at least 8 characters.");
+       return;
+     }
 
-    // Check if the email ends with ".edu.in"
-    if (!email.endsWith(".edu.in")) {
-      message.warning("Email should end with .edu.in");
-      return;
-    }
+    // // Check if the email ends with ".edu.in"
+     if (!email.endsWith(".edu.in")) {
+       message.warning("Email should end with .edu.in");
+       return;
+     }
 
-    try {
-      const userCredential = await firebase.SignupUserWithEmailAndPass(
-        email,
-        password
-      );
+     try {
+       const userCredential = await firebase.SignupUserWithEmailAndPass(
+         email,
+         password
+       );
 
-      // User signed up successfully
-      const user = userCredential.user;
+       // User signed up successfully
+       const user = userCredential.user;
 
-      // Now, you can add the username
-      await user.updateProfile({
-        displayName: username,
-      });
+       // Now, you can add the username
+       await user.updateProfile({
+         displayName: username,
+       });
 
-      message.success(
-        "Sign up successful! Please check your email to verify your account."
-      );
+       message.success(
+         "Sign up successful! Please check your email to verify your account."
+       );
 
-    } catch (error) {
-      // Handle errors
-      console.error("Error signing up:", error);
-      message.error("Error signing up. Please try again.");
-    }
+     } catch (error) {
+       // Handle errors
+       console.error("Error signing up:", error);
+       message.error("Error signing up. Please try again.");
+     }
   };
-
-    
-
+  
     return ( 
     <div className="login-container">
   <div className="login-form">

@@ -9,7 +9,6 @@
 .html{
     font-size: 62.5%;
 }
-
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines{
     display: none;
@@ -23,6 +22,8 @@
 
 .navbar{
     box-shadow: 0px 5px 10px 0px #aaa;
+    top: 0;
+    left: 0;
     position: fixed;
     width: 100%;
     background: #fff;

@@ -3,6 +3,8 @@ import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { message , Alert } from "antd";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 
@@ -38,6 +40,8 @@ function Login(){
   
   
     return ( 
+      <>
+      <Navbar />
     <div className="login-container">
   <div className="login-form">
     <div className="login-form-inner">
@@ -89,6 +93,8 @@ function Login(){
     </div>
   </div>
   </div>
+  <Footer />
+  </>
 
     );
 }

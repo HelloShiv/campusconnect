@@ -5,6 +5,8 @@
   import { useFirebase } from "../context/Firebase";
   import { useNavigate } from "react-router-dom";
   import { Button, notification } from "antd";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
   function Marketplace(){
@@ -35,9 +37,10 @@
     }, [firebase.isLoggedIn, navigate]);
 
       return (<>
+          <Navbar />
           <Search placeholder="Seach name the products........"/>
           <MarketplaceCard />
-          
+          <Footer />
           </>
       );
   }

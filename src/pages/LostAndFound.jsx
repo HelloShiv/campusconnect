@@ -5,6 +5,8 @@ import { useFirebase } from "../context/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button, notification } from "antd";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function LostAndFound(){
   const firebase = useFirebase();
@@ -34,9 +36,11 @@ function LostAndFound(){
     
 
     return(<>
+    <Navbar />
      <Search placeholder="Seach name the lost item ...."/>
      <LostPopUp />
         <Card />
+        <Footer />
         </>
     );
 }

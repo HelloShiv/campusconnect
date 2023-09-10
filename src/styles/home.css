@@ -1,0 +1,157 @@
+/* src/Home.css */
+.home-main {
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  display: flex;
+  margin-top: 80px;
+  padding: 20px;
+  flex-wrap: wrap;
+  /* background-image: url('./jecrc_img.jpg'); */
+  background-size: cover;
+  /* Add background-size property to cover the entire container */
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.home-main h1 {
+  font-size: 40px;
+  text-align: center; /* Center the text horizontally within the h1 element */
+  margin: 0;
+}
+
+.features {
+
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow features to wrap to the next line on smaller screens */
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.feature {
+  max-width: 500px;
+  margin-left: 60px;
+  margin-right: 60px;
+  flex: 1;
+  background-color: #f2f2f2;
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+/* Add hover effect for .feature */
+.feature:hover {
+  background-color: #08202f; /* Change the background color on hover */
+  color: white; /* Change the text color on hover */
+  transform: scale(1.05); /* Add a scale effect on hover (make it slightly larger) */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Add smooth transitions */
+}
+
+
+/* Responsive Styles for the second section */
+.working {
+  flex: 1;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 70%;
+  /* Adjust width to 100% for mobile devices */
+  padding: 20px;
+  background-color: transparent;
+}
+
+.works {
+  background-color: rgba(231, 236, 239, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* Adjust width to 100% for mobile devices */
+}
+.works p{
+  margin: 10px 10px 10px 10px;
+  max-width: 400px;
+  color: rgb(0, 0, 0);
+}
+.works h2{
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.work {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+
+/* Media Query for smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .home-main {
+    margin-top: 60px;
+    /* Reduce margin for smaller screens */
+  }
+
+  .features {
+    flex-direction: column;
+    /* Stack features vertically on smaller screens */
+    gap: 10px;
+  }
+
+  .feature {
+    flex: 1;
+  }
+
+  /* You can adjust other styles as needed for smaller screens */
+}
+
+/* Styles for the image stack section */
+.image-stack {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.image-container {
+  text-align: end;
+}
+
+.stacked-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  height: 17px;
+  left: 1090px;
+  position: absolute;
+  top: 36px;
+  width: 44px;
+}
+
+.image-caption {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Galdeano&display=swap');
+
+#wrapper {
+    height: 400px;
+    display: grid;
+    place-items: center;
+    font-family: 'Galdeano', sans-serif;
+    color: rgb(14, 11, 12);
+    width: 500px;
+    font-size: 50px;
+}

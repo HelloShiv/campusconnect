@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFirebase } from "../context/Firebase";
 import { Button, notification } from "antd";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Query() {
   const firebase = useFirebase();
@@ -32,8 +34,10 @@ function Query() {
 
   return (
     <>
+    <Navbar />
       <h1 style={{ paddingTop: "10vh" }}>Welcome to query resolver</h1>
       {/* Add your content for authenticated users here */}
+      <Footer />
     </>
   );
 }
