@@ -2,19 +2,26 @@ import React, { useEffect, useState } from "react";
 import "../styles/navbar.css";
 import { useNavigate } from "react-router-dom";
 import { useFirebase } from "../context/Firebase";
-import { message } from "antd";
+import { message  } from "antd";
+import {Button} from "antd";
 
 function Navbar() {
   const firebase = useFirebase();
   const navigate = useNavigate();
-  const [loggedInState, setLoggedInState] = useState("Log In"); // Default to "Log In"
+  const [loggedInState, setLoggedInState] = useState( <Button type="primary" >
+  <h4>LogIn</h4>
+</Button>); // Default to "Log In"
 
   useEffect(() => {
     // Use an effect to update the loggedInState when the authentication state changes.
     if (firebase.isLoggedIn) {
-      setLoggedInState("Log Out");
+      setLoggedInState(<Button type="primary" danger>
+      <h4>LogOut</h4>
+    </Button>);
     } else {
-      setLoggedInState("Log In");
+      setLoggedInState( <Button type="primary" >
+      <h4>LogIn</h4>
+    </Button>);
     }
   }, [firebase.isLoggedIn]);
 
