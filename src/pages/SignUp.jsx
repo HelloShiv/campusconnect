@@ -3,6 +3,7 @@ import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "antd";
+import campus from "../images/campus-connect-.png"
 
 function SignUp() {
   const firebase = useFirebase();
@@ -143,7 +144,7 @@ function SignUp() {
           <div className="swiper-wrapper">
             <div className="swiper-slide color-1">
               <div className="slide-image">
-              <img src="https://picsum.photos/600/600" loading="lazy" alt="" />
+              <img src={campus} style={{width:"600px" , height:"600px"}} loading="lazy" alt="" />
               </div>
               <div className="slide-content">
                 <h2>Turn your ideas into reality.</h2>
