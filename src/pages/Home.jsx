@@ -47,6 +47,8 @@ function Home(){
         </div>
       </section>
 
+      <div className="homepage-space" />
+
       <section className="working">
         <div className="works">
             <ul>

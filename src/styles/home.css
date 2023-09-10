@@ -123,42 +123,6 @@ html, body {
     }
   }
 
-  @media (max-width: 490px) {
-    .works{
-      padding:6vw 6vw 6vw 6vw;
-    }
-    .working{
-      background-color: black;
-    }
-    .herosection{
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .heading{
-      display: none;
-    }
-    .herosection-envlope-h1{
-      font-size: 2rem;
-    }
-    .herosection-detail{
-      font-size: 1.4rem;
-    }
-    .herosection-envlope {
-      margin-left: 10vw;
-      margin-right: 20vw;
-
-      width:100%;
-      /* background-color: red; */
-    }
-    .getStarted-btn{
-      margin-left: 25vw;
-      margin-right: 25vw;
-    }
-    .lastimg{
-      display: none;
-    }
-  }
 
 
 
@@ -229,7 +193,7 @@ html, body {
     align-items: center;
     flex: 1;
     margin-top: 5vh;
-    margin-left: 20vw;
+    margin-left: 16vw;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -291,4 +255,43 @@ html, body {
   margin: 2vh;
   width: 60vw;
   height: 40vh;
+}
+
+
+
+@media (max-width: 490px) {
+  .works{
+    padding:6vw 6vw 6vw 6vw;
+  }
+  .working{
+    display: none;
+  }
+  .herosection{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .heading{
+    display: none;
+  }
+  .herosection-envlope-h1{
+    font-size: 2rem;
+  }
+  .herosection-detail{
+    font-size: 1.4rem;
+  }
+  .herosection-envlope {
+    margin-left: 10vw;
+    margin-right: 20vw;
+
+    width:100%;
+    /* background-color: red; */
+  }
+  .getStarted-btn{
+    margin-left: 25vw;
+    margin-right: 25vw;
+  }
+  .lastimg{
+    display: none;
+  }
 }

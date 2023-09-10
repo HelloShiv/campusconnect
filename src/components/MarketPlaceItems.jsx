@@ -17,7 +17,7 @@ function MarketPlaceItems(props){
           {props.Amount === "0" ? (
             <h2 className="card_title">For Donation</h2>
           ) : (
-            <h2 className="card_title">Amount: Rs{props.Amount}</h2>
+            <h2 className="card_title">Amount: Rs. {props.Amount}</h2>
           )}
           <h2 className="card_title">Contact: {props.phoneNumber}</h2>
           <h2 className="card_text">{props.description}</h2>

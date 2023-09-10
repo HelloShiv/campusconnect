@@ -7,7 +7,7 @@ import { getAuth,
     signOut,
     signInWithEmailAndPassword} 
     from 'firebase/auth';
-import { Space, Spin, message } from 'antd';
+import { Space, Spin, message ,Progress } from 'antd';
 import  {Firestore, getFirestore , collection , addDoc ,getDocs} from'firebase/firestore';
 import { getStorage , ref , uploadBytes ,getDownloadURL} from "firebase/storage";
 
@@ -101,26 +101,54 @@ export const FirebaseProvider = (props) => {
       console.log(productName, phoneNumber, description, uploadedPhoto);
   
       const imageRef = ref(storage, `uploads/lostandfound/images/${Date.now()}-${uploadedPhoto.name}`);
-      const uploadResult = await uploadBytes(imageRef, uploadedPhoto);
-      
+  
+      // Create a promise to handle the upload
+      const uploadPromise = new Promise(async (resolve, reject) => {
+        try {
+          // Upload the photo
+          const uploadResult = await uploadBytes(imageRef, uploadedPhoto);
+          resolve(uploadResult);
+        } catch (error) {
+          reject(error);
+        }
+      });
+  
+      // Set a timeout for the upload (e.g., 30 seconds)
+      const uploadTimeout = 30000; // 30 seconds
+      const timeoutPromise = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(null); // Resolve with null to indicate a timeout
+        }, uploadTimeout);
+      });
+  
+      // Wait for either the upload to complete or the timeout to occur
+      const result = await Promise.race([uploadPromise, timeoutPromise]);
+  
+      if (result === null) {
+        // Handle the case where the upload timed out
+        throw new Error("File upload timed out. Please check your internet connection.");
+      }
+  
       const docData = {
         productName,
         phoneNumber,
         description,
-        imageURL: uploadResult.ref.fullPath,
+        imageURL: result.ref.fullPath,
         userID: user.uid,
         userEmail: user.email
       };
   
       await addDoc(collection(firestore, 'lostandfound'), docData);
-      
+  
       return true; // Indicates success
     } catch (error) {
-      message.error(error);
+      message.error(error.message);
       console.error("Error uploading and adding document:", error);
       return false; // Indicates failure
     }
   }
+  
+  
   
   const handleMarketPlaceListing = async (formData) => {
     try {
@@ -151,6 +179,7 @@ export const FirebaseProvider = (props) => {
       };
       console.log(docData);
       await addDoc(collection(firestore, 'marketplace'), docData);
+      console.log("done addDoc part");
       
       return true; // Indicates success
     } catch (error) {
