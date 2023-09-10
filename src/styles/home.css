@@ -1,0 +1,294 @@
+html, body {
+    overflow-x: hidden;
+  }
+
+.herosection{
+    width: 80vw;
+    display: flex;
+    gap: 13%;
+    justify-content: space-between;
+    margin-left: 15vw;
+    margin-right:10vw;
+}
+
+.heading{
+    font-size: 5rem;
+}
+
+.getStarted-btn {
+    display: block;
+    margin-top: 2%;
+    margin-bottom: 2vh;
+    font-weight: bolder;
+    font-size: 2.5rem;
+    width: 30vw;
+    height: auto; /* Remove fixed height */
+    padding: 0.2vh 0; /* Adjust padding as needed */
+    background-color: black;
+    color: white;
+    text-align: center; /* Center the text horizontally */
+    border-radius: 10px;
+  }
+
+.herosection-envlope{
+    width: 40%;
+    margin-right: 20%;
+    font-family: bold;
+}
+
+.herosection-envlope-h1 {
+    font-size: 2.3rem ;
+    font-weight:bold ;
+    padding-bottom:3%;
+}
+
+.herosection-detail{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.heading {
+    font-family:'sans-serif';
+}
+
+.homepage-space{
+    height: 8vh;
+    width: 100vw;
+}
+
+.coverPhoto{
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+.coverPhoto > img{
+    margin-left: 20%;
+    margin-right: 20%;
+    width: auto;
+    height: 50vh;
+
+}
+
+
+@media (max-width: 911px) {
+    .heading{
+        font-size: 3rem;
+    }
+    .heading-envlope{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .herosection-envlope{
+        width: 40%;
+        margin-right: 20%;
+        font-family: bold;
+    }
+    
+    .herosection-envlope-h1 {
+        font-size: 2rem ;
+        font-weight:bold ;
+        padding-bottom:3%;
+    }
+    
+    .herosection-detail{
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+    .getStarted-btn{
+      font-size: 1rem;
+    }
+    .lastimg{
+      display: none;
+    }
+    .working{
+      justify-content: center;
+      align-items:center;
+      padding: 4vw;
+      margin-left:25vw;
+      margin-right: 25vw;
+    }
+  }
+
+  @media (max-width: 538px) {
+    
+    .herosection{
+      margin-left: 5vw;
+      margin-right: 5vw;
+    }
+    .lastimg{
+      display: none;
+    }
+  }
+
+  @media (max-width: 490px) {
+    .works{
+      padding:6vw 6vw 6vw 6vw;
+    }
+    .working{
+      background-color: black;
+    }
+    .herosection{
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .heading{
+      display: none;
+    }
+    .herosection-envlope-h1{
+      font-size: 2rem;
+    }
+    .herosection-detail{
+      font-size: 1.4rem;
+    }
+    .herosection-envlope {
+      margin-left: 10vw;
+      margin-right: 20vw;
+
+      width:100%;
+      /* background-color: red; */
+    }
+    .getStarted-btn{
+      margin-left: 25vw;
+      margin-right: 25vw;
+    }
+    .lastimg{
+      display: none;
+    }
+  }
+
+
+
+
+
+
+
+
+
+  .home-main {
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    display: flex;
+    margin-top: 80px;
+    padding: 20px;
+    flex-wrap: wrap;
+    /* background-image: url('./jecrc_img.jpg'); */
+    background-size: cover;
+    /* Add background-size property to cover the entire container */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+  
+  .home-main h1 {
+    font-size: 40px;
+    text-align: center; /* Center the text horizontally within the h1 element */
+    margin: 0;
+  }
+  
+  .features {
+  
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw ;
+    /* Allow features to wrap to the next line on smaller screens */
+    /* justify-content: space-between; */
+    gap: 15px;
+    margin-top: 40px;
+  }
+  
+  .feature {
+    max-width: 500px;
+    margin-left: 60px;
+    margin-right: 60px;
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: -10px 7px 4px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+  }
+  /* Add hover effect for .feature */
+  .feature:hover {
+    background-color: #08202f; /* Change the background color on hover */
+    color: white; /* Change the text color on hover */
+    transform: scale(1.05); /* Add a scale effect on hover (make it slightly larger) */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Add smooth transitions */
+  }
+  
+  
+  /* Responsive Styles for the second section */
+  .working {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    margin-top: 5vh;
+    margin-left: 20vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 70%;
+    /* Adjust width to 100% for mobile devices */
+    padding: 20px;
+    background-color: transparent;
+  }
+  
+  .works {
+    background-color: rgba(231, 236, 239, 0.8);
+    box-shadow: -10px 7px 4px rgba(0, 0, 0, 0.1);
+    padding: 5vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+    /* Adjust width to 100% for mobile devices */
+  }
+  .works p{
+    margin: 10px 10px 10px 10px;
+    max-width: 400px;
+    padding-bottom: 2vh;
+    color: rgb(0, 0, 0);
+  }
+  .works h2{
+    color: rgb(0, 0, 0);
+  }
+  
+  .work {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+  }
+
+
+  @media (max-width: 768px) {
+    .home-main {
+      margin-top: 60px;
+      /* Reduce margin for smaller screens */
+    }
+  
+    .features {
+      flex-direction: column;
+      /* Stack features vertically on smaller screens */
+      gap: 10px;
+    }
+  
+    .feature {
+      flex: 1;
+    }
+}
+
+.lastimg{
+  margin: 2vh;
+  width: 60vw;
+  height: 40vh;
+}
