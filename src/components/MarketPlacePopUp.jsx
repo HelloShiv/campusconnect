@@ -89,7 +89,7 @@ const MarketPlacePopUp = () => {
         Add Item
       </Button>
       <Drawer
-        title="Add a new lost item"
+        title="Add a Product "
         width={720}
         onClose={onClose}
         open={open}
