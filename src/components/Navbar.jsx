@@ -46,7 +46,6 @@ function Navbar() {
           <li><a href="/">Home</a></li>
           <li><a href="/LostAndFound">Lost&Found</a></li>
           <li><a href="/Marketplace">Marketplace</a></li>
-          <li><a href="/Query">Query</a></li>
           <li><a href='/Login' onClick={logout}>{loggedInState}</a></li>
         </ul>
         <h1 className="logo ">CampusConnect</h1>

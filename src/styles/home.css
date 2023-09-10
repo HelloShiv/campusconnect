@@ -60,13 +60,15 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 .coverPhoto > img{
     margin-left: 20%;
     margin-right: 20%;
     width: auto;
-    height: 50vh;
+    
 
 }
 
