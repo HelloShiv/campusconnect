@@ -3,17 +3,19 @@ import { useFirebase } from "../context/Firebase";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "antd";
-import campus from "../images/campus-connect-.png"
+import { notification } from "antd";
+import campus from "../images/campus-connect-.png";
 
 function SignUp() {
   const firebase = useFirebase();
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,15 +24,19 @@ function SignUp() {
     }
   }, []);
 
+  const isStrongPassword = (value) => {
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return strongPasswordRegex.test(value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Reset error messages
+  
     setUsernameError("");
     setEmailError("");
     setPasswordError("");
-
-    // Check if name, email, and password are provided
+    setConfirmPasswordError("");
+  
     if (!username) {
       setUsernameError("Please provide your username.");
       return;
@@ -40,39 +46,64 @@ function SignUp() {
     } else if (!password) {
       setPasswordError("Please provide your password.");
       return;
+    } else if (!confirmPassword) {
+      setConfirmPasswordError("Please confirm your password.");
+      return;
+    } else if (password !== confirmPassword) {
+      setConfirmPasswordError("Passwords do not match.");
+      return;
     } else if (password.length < 8) {
       setPasswordError("Password is too short. It should be at least 8 characters.");
       return;
+    } else if (!isStrongPassword(password)) {
+      setPasswordError("Password is too weak. It should contain at least one lowercase letter, one uppercase letter, one number, and one special character.");
+      return;
     }
-
-    // Check if the email ends with ".edu.in"
+  
     if (!email.endsWith(".edu.in")) {
       setEmailError("Email should end with .edu.in");
       return;
     }
 
+    notification.success({
+      message: "Verification Email Sent",
+      description:
+        "A verification email has been sent to your email address. Please verify your email to complete the registration.",
+    });
+  
     try {
       const userCredential = await firebase.SignupUserWithEmailAndPass(
         email,
         password
       );
-
-      // User signed up successfully
-      const user = userCredential.user;
-
-      // Now, you can add the username
-      await user.updateProfile({
-        displayName: username,
-      });
-
-      // Handle success, e.g., navigate to another page
-      navigate("/");
+    
+      if (userCredential && userCredential.user) {
+        const user = userCredential.user;
+    
+        await user.updateProfile({
+          displayName: username,
+        });
+    
+        // Send a verification email
+        await user.sendEmailVerification();
+    
+        // Display a notification
+        notification.success({
+          message: "Verification Email Sent",
+          description:
+            "A verification email has been sent to your email address. Please verify your email to complete the registration.",
+        });
+    
+        navigate("/");
+      } else {
+        // Handle the case where the user object is undefined
+        console.error("User not defined after sign-up.");
+      }
     } catch (error) {
-      // Handle errors
       console.error("Error signing up:", error);
-      // setEmailError("Error signing up. Please try again." ,error);
     }
-  };
+    };
+  
 
   return (
     <div className="login-container">
@@ -130,6 +161,20 @@ function SignUp() {
             {passwordError && <Alert message={passwordError} type="error" showIcon />}
           </div>
 
+          <div className="login-form-group">
+            <label name="confirmPassword">Confirm Password <span className="required-star">*</span></label>
+            <input
+              autoComplete="off"
+              required
+              type="password"
+              placeholder="Confirm Password"
+              id="confirmPassword"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
+            />
+            {confirmPasswordError && <Alert message={confirmPasswordError} type="error" showIcon />}
+          </div>
+
           <a href="#" className="rounded-button login-cta" onClick={handleSubmit}>
             SignUp
           </a>
@@ -144,7 +189,7 @@ function SignUp() {
           <div className="swiper-wrapper">
             <div className="swiper-slide color-1">
               <div className="slide-image">
-              <img src={campus} style={{width:"600px" , height:"600px"}} loading="lazy" alt="" />
+                <img src={campus} style={{width:"600px" , height:"600px"}} loading="lazy" alt="" />
               </div>
               <div className="slide-content">
                 <h2>Connect with Campus</h2>
