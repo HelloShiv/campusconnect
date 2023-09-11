@@ -106,7 +106,7 @@ function SignUp() {
   
 
   return (
-    <div className="login-container">
+    <div className="login-container signup">
       <div className="login-form">
         <div className="login-form-inner">
           <div className="logo">
