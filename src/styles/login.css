@@ -358,12 +358,12 @@
   }
 }
 
-@media (max-width: 450px){
+/* @media (max-width: 450px){
   .login-container {
     margin: 0;
     height: 130vh;
   }
-}
+} */
   @media screen and (max-width: 420px) {
     .login-container .login-form {
       padding: 20px;
@@ -373,7 +373,9 @@
     }
     .login-container {
       margin: 0;
-      height: 130vh;
+    }
+    .signup{
+      height:115vh;
     }
   }
 
