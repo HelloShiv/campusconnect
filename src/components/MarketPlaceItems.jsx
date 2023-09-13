@@ -1,7 +1,7 @@
 import React , {useState,useEffect}from "react";
 import { useFirebase } from "../context/Firebase";
 import { Button, message, Popconfirm } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PhoneFilled } from '@ant-design/icons';
 
 function MarketPlaceItems(props){
   const firebase = useFirebase();
@@ -30,7 +30,7 @@ const cancel = (e) => {
           ) : (
             <h2 className="card_title">Amount: Rs. {props.Amount}</h2>
           )}
-          <h2 className="card_title">Contact: {props.phoneNumber}</h2>
+          <h2 className="card_title">Contact <PhoneFilled style={{ transform: "rotate(120deg)"  }} /> {props.phoneNumber}</h2>
           <h2 className="card_text">{props.description}</h2>
           <Popconfirm
             title="Delete the task"
@@ -41,7 +41,7 @@ const cancel = (e) => {
             cancelText="No"
             >
               
-            <Button danger><DeleteOutlined /></Button>
+            <Button danger><DeleteOutlined />Delete</Button>
           </Popconfirm>
         </div>
       </div>
