@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFirebase } from "../context/Firebase";
 import "../styles/marketplace.css";
 import MarketplaceItems from "./MarketPlaceItems";
-import { Pagination } from "antd"; // Import Pagination from Ant Design
+import { Pagination, Spin } from "antd"; // Import Pagination and Spin from Ant Design
 
 function MarketplaceCard(props) {
   const [items, setItems] = useState([]);
@@ -36,20 +36,26 @@ function MarketplaceCard(props) {
 
   return (
     <div className="main">
-      <ul className="cards">
-        {items.slice(startIndex, endIndex).map((item, index) => (
-          <MarketplaceItems key={index} {...item} />
-        ))}
-      </ul>
-      <Pagination
-        current={currentPage}
-        pageSize={pageSize}
-        total={items.length}
-        onChange={handlePageChange}
-        showSizeChanger={false} 
-        showQuickJumper={true} 
-        style={{marginBottom:"2vh" , display:"flex" ,justifyContent:"center"}}
-      />
+      {isLoading ? (
+        <Spin size="large" tip="Loading..." style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh"  }} />
+      ) : (
+        <div>
+          <ul className="cards">
+            {items.slice(startIndex, endIndex).map((item, index) => (
+              <MarketplaceItems key={index} {...item} />
+            ))}
+          </ul>
+          <Pagination
+            current={currentPage}
+            pageSize={pageSize}
+            total={items.length}
+            onChange={handlePageChange}
+            showSizeChanger={false}
+            showQuickJumper={true}
+            style={{ marginBottom: "2vh", display: "flex", justifyContent: "center" }}
+          />
+        </div>
+      )}
     </div>
   );
 }

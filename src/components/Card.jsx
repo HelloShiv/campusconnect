@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardItems from "./CardItems";
 import { useFirebase } from "../context/Firebase";
 import "../styles/card.css";
-import { Pagination } from "antd"; // Import Pagination from Ant Design
+import { Pagination, Spin } from "antd"; // Import Pagination and Spin from Ant Design
 
 function Card() {
   const [items, setItems] = useState([]);
@@ -37,7 +37,7 @@ function Card() {
   return (
     <div className="main">
       {isLoading ? (
-        <p>Loading...</p>
+        <Spin size="large" tip="Loading..." style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh" }} />
       ) : (
         <div>
           <ul className="cards">
@@ -50,9 +50,9 @@ function Card() {
             pageSize={pageSize}
             total={items.length}
             onChange={handlePageChange}
-            showSizeChanger={false} 
-            showQuickJumper={true} 
-            style={{display:"flex", justifyContent:"center" ,paddingBottom:"2vh"}}
+            showSizeChanger={false}
+            showQuickJumper={true}
+            style={{ display: "flex", justifyContent: "center", paddingBottom: "2vh" }}
           />
         </div>
       )}
