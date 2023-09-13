@@ -8,7 +8,7 @@ import { getAuth,
     signInWithEmailAndPassword} 
     from 'firebase/auth';
 import { Space, Spin, message ,Progress } from 'antd';
-import  {Firestore, getFirestore , collection , addDoc ,getDocs} from'firebase/firestore';
+import  {Firestore, getFirestore , collection , addDoc ,getDocs ,doc ,deleteDoc} from'firebase/firestore';
 import { getStorage , ref , uploadBytes ,getDownloadURL} from "firebase/storage";
 
 export const FirebaseContext = createContext(null);
@@ -72,6 +72,7 @@ export const FirebaseProvider = (props) => {
 
   const isLoggedIn = !!user; // Use double negation to convert to a boolean.
   const isEmailVerified = user?.emailVerified;
+  const userUID = user?.uid;
 
   const SignOut = () => {
     return signOut(firebaseAuth);
@@ -93,6 +94,7 @@ export const FirebaseProvider = (props) => {
       const description = formData['description'];
       const photoList = formData['photoList'];
       const uploadedPhoto = photoList[0];
+      const category = formData['category'];
   
       if (!uploadedPhoto) {
         throw new Error("No photo provided.");
@@ -135,7 +137,8 @@ export const FirebaseProvider = (props) => {
         description,
         imageURL: result.ref.fullPath,
         userID: user.uid,
-        userEmail: user.email
+        userEmail: user.email,
+        category
       };
   
       await addDoc(collection(firestore, 'lostandfound'), docData);
@@ -163,31 +166,59 @@ export const FirebaseProvider = (props) => {
         throw new Error("No photo provided.");
       }
   
-      console.log("this is the out",productName, phoneNumber, description,Amount, uploadedPhoto);
+      console.log("this is the out", productName, phoneNumber, description, Amount, uploadedPhoto);
   
       const imageRef = ref(storage, `uploads/marketplace/images/${Date.now()}-${uploadedPhoto.name}`);
-      const uploadResult = await uploadBytes(imageRef, uploadedPhoto);
-      
+  
+      // Create a promise to handle the upload
+      const uploadPromise = new Promise(async (resolve, reject) => {
+        try {
+          // Upload the photo
+          const uploadResult = await uploadBytes(imageRef, uploadedPhoto);
+          resolve(uploadResult);
+        } catch (error) {
+          reject(error);
+        }
+      });
+  
+      // Set a timeout for the upload (e.g., 30 seconds)
+      const uploadTimeout = 30000; // 30 seconds
+      const timeoutPromise = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(null); // Resolve with null to indicate a timeout
+        }, uploadTimeout);
+      });
+  
+      // Wait for either the upload to complete or the timeout to occur
+      const result = await Promise.race([uploadPromise, timeoutPromise]);
+  
+      if (result === null) {
+        // Handle the case where the upload timed out
+        throw new Error("File upload timed out. Please check your internet connection.");
+      }
+  
       const docData = {
         productName,
         phoneNumber,
         description,
         Amount,
-        imageURL: uploadResult.ref.fullPath,
+        imageURL: result.ref.fullPath,
         userID: user.uid,
         userEmail: user.email
       };
-      console.log(docData);
+  
       await addDoc(collection(firestore, 'marketplace'), docData);
+  
       console.log("done addDoc part");
-      
+  
       return true; // Indicates success
     } catch (error) {
-      message.error(error);
+      message.error(error.message);
       console.error("Error uploading and adding document:", error);
       return false; // Indicates failure
     }
   }
+  
 
 
 
@@ -206,6 +237,21 @@ export const FirebaseProvider = (props) => {
       return null;
     }
   }
+
+  const deleteItem = async (itemId) => {
+    try {
+      // Construct the reference to the Firestore document
+      const itemRef = doc(firestore, 'lostandfound', itemId);
+  
+      // Delete the document
+      await deleteDoc(itemRef);
+  
+      console.log("Item deleted successfully");
+    } catch (error) {
+      console.error("Error deleting item:", error);
+      throw error;
+    }
+  };
   
 
 
@@ -231,6 +277,8 @@ export const FirebaseProvider = (props) => {
         listAllMarketplaceItems,
         isLoggedIn,
         isEmailVerified,
+        userUID,
+        deleteItem
       }}
     >
       {props.children}
