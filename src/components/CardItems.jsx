@@ -22,8 +22,6 @@ function CardItems(props) {
   };
 
   const cancel = (e) => {
-    console.log(e);
-    message.error("Click on No");
   };
 
   useEffect(() => {
