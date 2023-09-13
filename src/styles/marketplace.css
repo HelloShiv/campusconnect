@@ -93,11 +93,11 @@ img {
 
 .product_content {
   padding: 1rem;
-  background: #384f48;
+  background: #e4e4e4;
 }
 
 .card_title {
-  color: #ffffff;
+  color: #000000;
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -106,7 +106,7 @@ img {
 }
 
 .card_text {
-  color: #ffffff;
+  color: #000000;
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;    
