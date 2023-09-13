@@ -1,9 +1,20 @@
 import React , {useState,useEffect}from "react";
 import { useFirebase } from "../context/Firebase";
+import { Button, message, Popconfirm } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 function MarketPlaceItems(props){
   const firebase = useFirebase();
   const [url , setURL]  = useState(null);
+
+ const confirm = (e) => {
+  console.log(e);
+  message.success('Click on Yes');
+};
+const cancel = (e) => {
+  console.log(e);
+  message.error('Click on No');
+};
 
   useEffect(() => {
     firebase.getImageURL(props.imageURL).then(url => setURL(url));
@@ -21,6 +32,17 @@ function MarketPlaceItems(props){
           )}
           <h2 className="card_title">Contact: {props.phoneNumber}</h2>
           <h2 className="card_text">{props.description}</h2>
+          <Popconfirm
+            title="Delete the task"
+            description="Are you sure to delete this item ?"
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+            >
+              
+            <Button danger><DeleteOutlined /></Button>
+          </Popconfirm>
         </div>
       </div>
     </li>
