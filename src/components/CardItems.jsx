@@ -14,7 +14,7 @@ function CardItems(props) {
         message.success("Item deleted successfully");
       } catch (error) {
         console.error("Error deleting item:", error);
-        message.error("Failed to delete item");
+        message.error("Failed to delete item, error encountered internet problem");
       }
     } else {
       message.error("You are not authorized to delete this item");

@@ -240,6 +240,9 @@ export const FirebaseProvider = (props) => {
 
   const deleteItem = async (itemId) => {
     try {
+      // Simulate a delay of 5 seconds (you can adjust this value)
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+  
       // Construct the reference to the Firestore document
       const itemRef = doc(firestore, 'lostandfound', itemId);
   
@@ -249,10 +252,9 @@ export const FirebaseProvider = (props) => {
       console.log("Item deleted successfully");
     } catch (error) {
       console.error("Error deleting item:", error);
-      throw error;
+      throw new Error("Unable to delete item due to a network issue. Please check your internet connection.");
     }
   };
-  
 
 
 
