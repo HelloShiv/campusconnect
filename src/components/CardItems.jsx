@@ -1,7 +1,7 @@
 import React , {useState,useEffect}from "react";
 import { useFirebase } from "../context/Firebase";
 import { Button, message, Popconfirm } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined,PhoneFilled } from '@ant-design/icons';
 
 function CardItems(props){
   const firebase = useFirebase();
@@ -25,7 +25,8 @@ function CardItems(props){
         <div className="card_image"><img src={url} className="card_photo"/></div>
         <div className="card_content">
           <h2 className="card_title">{props.productName}</h2>
-          <h2 className="card_title">Contact: {props.phoneNumber}</h2>
+          <h2 className="card_title">Contact <PhoneFilled style={{ transform: "rotate(120deg)"  }} /> {props.phoneNumber}</h2>
+          
           <h2 className="card_text">{props.description}</h2>
           <Popconfirm
             title="Delete the task"
@@ -36,7 +37,7 @@ function CardItems(props){
             cancelText="No"
             >
               
-            <Button danger><DeleteOutlined /></Button>
+            <Button danger><DeleteOutlined />Delete</Button>
           </Popconfirm>
           
         </div>
