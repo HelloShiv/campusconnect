@@ -31,6 +31,8 @@ h1 {
 }
 
 img {
+  border-radius: 1.25rem;
+  padding: 7px;
   height: auto;
   max-width: 100%;
   vertical-align: middle;
@@ -77,6 +79,13 @@ img {
 @media (min-width: 56rem) {
   .cards_item {
     width: 33.3333%;
+  }
+}
+
+@media (max-width: 639px) {
+  .cards_item {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
