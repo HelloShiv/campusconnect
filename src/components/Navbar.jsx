@@ -39,7 +39,7 @@ function Navbar() {
       }
     }
   }
-
+  
   return (
     <nav className="navbar prevent-select">
       <div className="navbar-container container">
@@ -53,6 +53,15 @@ function Navbar() {
           <li><a href="/">Home</a></li>
           <li><a href="/LostAndFound">Lost&Found</a></li>
           <li><a href="/Marketplace">Marketplace</a></li>
+          {(firebase.currentUserEmail === "shiv.21bcon217@jecrcu.edu.in" || firebase.currentUserEmail === "arpit.21bcon225@jecrcu.edu.in") && (
+            <li>
+              <a href="https://mycampusconnect.jetadmin.io/app/admin_panel_3877/prod/page/listing-of-lostandfounds" target="_blank">
+              <Button type="primary" style={{backgroundColor:"#000000" ,color:"#ffffff" ,fontWeight:"bolder"}}>
+                Admin Panel
+              </Button>
+              </a>
+            </li>
+          )}
           <li><a href='/Login' onClick={logout}>{loggedInState}</a></li>
         </ul>
         <h1 className="logo ">CampusConnect</h1>
