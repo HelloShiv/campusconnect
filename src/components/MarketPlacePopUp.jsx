@@ -142,7 +142,7 @@ const MarketPlacePopUp = () => {
 
           <Form.Item
           name="Amount"
-          label="Amount"
+          label="Amount | Enter 0 for donation"
           rules={[
             {
               required: true,
