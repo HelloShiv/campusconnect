@@ -55,6 +55,7 @@ function Card() {
           value={searchQuery}
           onChange={handleSearchInputChange}
           className="new-searchbar"
+          style={{marginTop:"10vh"}}
         />
       </div>
       <LostPopUp />

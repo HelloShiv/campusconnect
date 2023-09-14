@@ -79,7 +79,7 @@ const filteredItems = items.filter((item) => {
             className="new-searchbar"
             placeholder="Search by product name, phone number, or email"
             onChange={handleSearchInputChange}
-            style={{ }}
+            style={{ marginTop:"10vh"}}
           />
           <MarketPlacePopUp />
           <ul className="cards">
