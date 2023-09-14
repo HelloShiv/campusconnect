@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import CardItems from "./CardItems";
 import { useFirebase } from "../context/Firebase";
 import "../styles/card.css";
-import { Pagination, Spin } from "antd"; // Import Pagination and Spin from Ant Design
+import { Pagination, Spin, Input } from "antd";
+import LostPopUp from "../components/LostPopUp";
 
 function Card() {
   const [items, setItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // Current page
-  const pageSize = 9; // Number of items per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 9;
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
   const firebase = useFirebase();
 
   useEffect(() => {
@@ -25,34 +27,68 @@ function Card() {
       });
   }, []);
 
-  // Function to handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  // Calculate the start and end index based on currentPage and pageSize
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const filteredItems = items.filter((item) =>
+    // Filter based on multiple fields
+    item.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.phoneNumber.includes(searchQuery) ||
+    item.userEmail.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
 
   return (
     <div className="main">
+      <div className="search-bar">
+        <Input
+          placeholder="Search by Product Name, Category, Phone Number, or User Email"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+          className="new-searchbar"
+        />
+      </div>
+      <LostPopUp />
+      
       {isLoading ? (
-        <Spin size="large" tip="Loading..." style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh" }} />
+        <Spin
+          size="large"
+          tip="Loading..."
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "60vh",
+          }}
+        />
       ) : (
         <div>
           <ul className="cards">
-            {items.slice(startIndex, endIndex).map((item, index) => (
+            {filteredItems.slice(startIndex, endIndex).map((item, index) => (
               <CardItems key={index} {...item} />
             ))}
           </ul>
           <Pagination
             current={currentPage}
             pageSize={pageSize}
-            total={items.length}
+            total={filteredItems.length}
             onChange={handlePageChange}
             showSizeChanger={false}
             showQuickJumper={true}
-            style={{ display: "flex", justifyContent: "center", paddingBottom: "2vh" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingBottom: "2vh",
+            }}
           />
         </div>
       )}
