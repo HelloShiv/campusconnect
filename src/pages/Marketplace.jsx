@@ -36,8 +36,6 @@
     }, [firebase.isLoggedIn, navigate]);
 
       return (<>
-          <Search placeholder="Seach name the products........"/>
-          <MarketPlacePopUp />
           <MarketplaceCard />
           
           </>
