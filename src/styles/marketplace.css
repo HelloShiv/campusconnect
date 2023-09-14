@@ -8,7 +8,15 @@
   box-sizing: border-box;
 }
 
-
+.new-searchbar{
+  display:"flex" ;
+  justify-content:"center" ;
+  width:"56vw" ;
+  margin-left:"auto" ;
+  margin-right:"auto";
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+}
 
 body {
   color: #272727;
@@ -155,22 +163,13 @@ img {
   margin-right: 25%;
 }
 
-.new-searchbar{
-  display:"flex" ;
-  justify-content:"center" ;
-  width:"56vw" ;
-  margin-left:"auto" ;
-  margin-right:"auto";
-  margin-top: 10vh;
-  margin-bottom: 2vh;
-}
 
 
 @media (max-width: 450px){
   .new-searchbar{
     margin-top: 10vh;
     margin-left: 12vw;
-    margin-bottom: 1.8vh;
+    margin-bottom: 1.8  vh;
     width: 70vw;
   }
 }
